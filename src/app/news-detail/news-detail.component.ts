@@ -46,7 +46,8 @@ export class NewsDetailComponent implements OnInit {
 
     constructor(
         public activatedRoute: ActivatedRoute
-    ) { }
+    ) {
+    }
 
     public ngOnInit() {
         this.article$ = this.activatedRoute.paramMap.pipe(

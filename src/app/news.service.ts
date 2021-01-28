@@ -7,7 +7,8 @@ import { Injectable } from '@angular/core';
 })
 export class NewsService {
 
-    constructor() {}
+    constructor() {
+    }
 
     /**
      * Consume the NewsApiService here, make sure
