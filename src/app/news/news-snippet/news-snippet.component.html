@@ -1,0 +1,23 @@
+<a class="news-snippet-image-wrapper" [routerLink]="navigationLink" [state]="{article: article}" tabindex="-1">
+    <app-ui-image class="news-snippet-image"
+                  altText="Article image"
+                  [imageUrl]="article.urlToImage"
+    ></app-ui-image>
+</a>
+<app-ui-card class="news-snippet-card">
+    <div ui-card-headline>
+        <a class="news-snippet-source-name" [attr.href]="article.source.url ? article.source.url : null">
+            {{article.source.name}}
+        </a>
+        <span>{{article.publishedAt | date}}</span>
+    </div>
+
+    <a ui-card-title
+       class="news-snippet-title"
+       [routerLink]="navigationLink"
+       [state]="{article: article}"
+    >
+        {{ article.title }}
+    </a>
+    <div ui-card-content class="news-snippet-description">{{article.description}}</div>
+</app-ui-card>

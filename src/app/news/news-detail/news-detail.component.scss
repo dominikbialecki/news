@@ -1,0 +1,129 @@
+@import "src/styles/media-queries";
+@import "src/styles/palette";
+
+.news-detail-image {
+    max-height: 500px;
+}
+
+.news-detail-info {
+    display: flex;
+
+    .news-detail-data {
+        flex: 0 0 auto;
+    }
+
+    .news-detail-card {
+        width: 80%;
+        flex: 0 1 auto;
+    }
+}
+
+.news-detail-data {
+    margin-top: 15px;
+    text-align: right;
+
+    p {
+        margin-bottom: 0.8em;
+    }
+
+    .news-detail-data-comments {
+        color: $color-accent;
+    }
+}
+
+.news-detail-card {
+    $top-offset: 45px;
+    position: relative;
+    top: -$top-offset;
+    margin-bottom: -$top-offset;
+}
+
+.news-detail-card-title {
+    display: block;
+    text-decoration: none;
+    transition: color .2s ease-in-out;
+
+    &:focus, &:hover {
+        outline: none;
+        color: $color-accent;
+    }
+}
+
+.news-detail-card-content-actions {
+    margin-top: 45px;
+    display: flex;
+    justify-content: center;
+
+    .news-detail-read-more {
+        border-radius: 100px;
+    }
+}
+
+.comments-list {
+    margin-top: 80px;
+    padding: 0 20px 100px;
+}
+
+.comments-list-header {
+    font-weight: 400;
+}
+
+.comment {
+    display: flex;
+}
+
+.comment-user-avatar {
+    margin: 20px;
+    flex: 0 0 auto;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.comment-body {
+    padding: 12px;
+    flex: 1 1 auto;
+}
+
+.comment-body-header {
+    display: flex;
+    justify-content: space-between;
+    line-height: 2.5;
+}
+
+.comment-user-name {
+    font-weight: 500;
+}
+
+.comment-date {
+    font-weight: 400;
+    margin-right: 20px;
+}
+
+
+@include mobile {
+    .news-detail-image {
+        max-height: 300px;
+    }
+
+    .news-detail-info {
+        flex-direction: column;
+
+        .news-detail-card {
+            position: unset;
+            width: 100%;
+            padding-top: 0;
+        }
+
+        .news-detail-data {
+            display: flex;
+            flex-wrap: wrap;
+
+            p {
+                white-space: nowrap;
+                margin-right: 15px;
+            }
+        }
+    }
+
+}

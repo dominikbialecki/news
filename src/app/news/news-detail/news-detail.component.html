@@ -1,0 +1,51 @@
+<ng-container *ngIf="(article$ | async) as article">
+    <app-ui-image class="news-detail-image"
+                  altText="Article image"
+                  [imageUrl]="article.urlToImage"
+    ></app-ui-image>
+    <div class="news-detail-info">
+        <app-ui-card>
+            <div ui-card-content class="news-detail-data">
+                <p>{{article.source.name}}</p>
+                <p>{{article.author || 'Unknown author'}}</p>
+                <p>{{article.publishedAt | date}}</p>
+                <p class="news-detail-data-comments">{{comments.length}} comments</p>
+            </div>
+        </app-ui-card>
+        <app-ui-card class="news-detail-card">
+            <a ui-card-title class="news-detail-card-title" [href]="article.url">{{ article.title }}</a>
+
+            <div ui-card-content class="news-detail-card-content">
+                <p>{{article.description}}</p>
+                <p>{{article.content}}</p>
+
+                <div class="news-detail-card-content-actions">
+                    <a mat-flat-button [href]="article.url" class="news-detail-read-more" color="accent">
+                        Read more
+                    </a>
+                </div>
+            </div>
+        </app-ui-card>
+    </div>
+
+    <div class="comments-list">
+        <h1 class="comments-list-header">{{comments.length}} comments</h1>
+
+        <ng-container *ngFor="let comment of comments">
+            <div class="comment">
+                <app-ui-image class="comment-user-avatar" [imageUrl]="comment.avatar"
+                              altText="User avatar"></app-ui-image>
+                <div class="comment-body">
+                    <div class="comment-body-header">
+                        <div class="comment-user-name">{{comment.name}}</div>
+                        <div class="comment-date">{{comment.date | date}}</div>
+                    </div>
+                    <div>{{comment.comment}}</div>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+        </ng-container>
+
+    </div>
+
+</ng-container>

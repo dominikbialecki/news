@@ -1,0 +1,16 @@
+@import '~@angular/material/theming';
+@import 'src/styles/palette';
+
+@include mat-core();
+
+$candy-app-primary: mat-palette($mat-indigo);
+$candy-app-accent: mat-palette($app-palette-primary);
+$candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent);
+
+@include angular-material-theme($candy-app-theme);
+
+$custom-typography: mat-typography-config(
+    $font-family: '"Montserrat", Arial, sans-serif',
+);
+
+@include angular-material-typography($custom-typography);

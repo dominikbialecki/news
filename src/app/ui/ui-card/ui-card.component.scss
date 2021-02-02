@@ -1,0 +1,36 @@
+@import "src/styles/palette";
+
+$element-margin: 30px;
+$headline-font-size: 10px;
+$headline-line-height: 16px;
+$description-font-size: 12px;
+$description-line-height: $description-font-size * 2;
+
+:host {
+    display: block;
+    background: white;
+    padding: 30px;
+
+    ::ng-deep [ui-card-headline] {
+        font-size: $headline-font-size;
+        line-height: $headline-line-height;
+        text-transform: uppercase;
+        margin-bottom: $element-margin - ($headline-line-height - $headline-font-size) / 2;
+        color: $color-light;
+    }
+
+    ::ng-deep [ui-card-title] {
+        font-size: 24px;
+        line-height: 1.1;
+        text-transform: uppercase;
+        margin-bottom: $element-margin - ($description-line-height - $description-font-size);;
+        color: $color-dark;
+    }
+
+    ::ng-deep [ui-card-content] {
+        font-size: $description-font-size;
+        line-height: $description-line-height;
+        color: $color-light;
+    }
+}
+

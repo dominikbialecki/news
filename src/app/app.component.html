@@ -22,7 +22,6 @@
     </mat-toolbar-row>
 </mat-toolbar>
 
-<!-- Content -->
-<!-- <div [@routeAnimations]="prepareRoute(outlet)"> -->
-<router-outlet #outlet="outlet"></router-outlet>
-<!-- </div> -->
+<div [@routeAnimations]="prepareRoute(outlet)" class="news-app-content">
+    <router-outlet #outlet="outlet"></router-outlet>
+</div>

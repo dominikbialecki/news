@@ -1,5 +1,11 @@
-.news-app-toolbar {
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
 
+.news-app-toolbar {
+    flex: 0 0 auto;
 }
 
 .news-app-menu {
@@ -12,4 +18,17 @@
 
 .news-app-spacer {
     flex: 1 1 auto;
+}
+
+.news-app-content {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+
+
+    router-outlet + ::ng-deep * {
+        width: 100%;
+        max-width: 1200px;
+        background: white;
+    }
 }

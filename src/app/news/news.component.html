@@ -1,10 +1,26 @@
-<div class="content">
-    <div *ngFor="let article of articles">
-        <a routerLink="/article" [state]="article">{{ article.title }}</a>
+<div class="news-snippet-list" *ngIf="articles$ | async as articles">
+    <div class="news-search-wrapper">
+        <mat-form-field class="news-search" color="accent">
+            <mat-label>Search</mat-label>
+            <input matInput [formControl]="searchControl"/>
+        </mat-form-field>
+        <mat-progress-bar *ngIf="loading$ | async" class="news-search-progress" color="accent"
+                          [mode]="'indeterminate'"></mat-progress-bar>
     </div>
-
-    <!-- Search mat input with debouncing and mat progress bar for loading -->
-    <!-- List of fetched articles as snippets per the provided designs -->
-    <!-- No results indication -->
-
+    <div class="news-empty-grid-cell"></div>
+    <div class="news-empty-grid-cell"></div>
+    <ng-container *ngIf="(loading$ | async) === false">
+        <ng-container *ngIf="articles.length; else noResultsIndication">
+            <app-news-snippet *ngFor="let article of articles$ | async; let i = index; trackBy: trackByArticleUrl"
+                              [article]="article"
+                              navigationLink="/article"
+            ></app-news-snippet>
+        </ng-container>
+        <ng-template #noResultsIndication>
+            <div class="news-no-results-indication">
+                <span>No articles found </span>
+                <span *ngIf="searchControl.value">for "{{searchControl.value}}"</span>
+            </div>
+        </ng-template>
+    </ng-container>
 </div>

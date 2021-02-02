@@ -1,26 +1,20 @@
 import { Component } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
+import { slideInAnimation } from './animations';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     animations: [
-        // slideInAnimation
+        slideInAnimation
     ]
 })
 export class AppComponent {
-    public title = 'News';
     public article = false;
 
     constructor(router: Router) {
-        router.events.subscribe(() => {
-            if (router.url.startsWith('/article')) {
-                this.article = true;
-            } else {
-                this.article = false;
-            }
-        });
+        router.events.subscribe(() => this.article = router.url.startsWith('/article'));
     }
 
     public prepareRoute(outlet: RouterOutlet): any {

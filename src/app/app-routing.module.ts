@@ -1,13 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { NewsDetailComponent } from './news-detail/news-detail.component';
+import { NewsDetailComponent } from './news/news-detail/news-detail.component';
 import { NewsComponent } from './news/news.component';
+import { NewsDetailGuard } from './news/news-detail/news-detail.guard';
+
 
 const routes: Routes = [
     {path: '', redirectTo: '/news', pathMatch: 'full'},
     {path: 'news', component: NewsComponent, data: {animation: 'NewsComponent'}},
-    {path: 'article', component: NewsDetailComponent, data: {animation: 'NewsDetailComponent'}},
+    {
+        path: 'article',
+        component: NewsDetailComponent,
+        canActivate: [NewsDetailGuard],
+        resolve: {article: NewsDetailGuard},
+        data: {animation: 'NewsDetailComponent', redirectUrl: 'news'}
+    },
 ];
 
 @NgModule({
